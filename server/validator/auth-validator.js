@@ -16,4 +16,11 @@ const signupSchema = z.object({
     .regex(/^\d{10}$/, { message: "Invalid phone number format" }),
 });
 
-module.exports = signupSchema;
+const signInSchema = z.object({
+  email: z
+    .string({ required_error: "Email is required" })
+    .email({ message: "Invalid email format" }),
+  password: z.string({ required_error: "Password is required" }),
+});
+
+module.exports = { signupSchema, signInSchema };
